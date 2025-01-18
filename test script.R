@@ -42,5 +42,10 @@ res <- GET(
 data = fromJSON(rawToChar(res$content))
 
 
+data$measurements$flow[[2]]
+
+data$measurements$concentration[[2]]
+
+
 
 
