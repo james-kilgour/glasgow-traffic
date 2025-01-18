@@ -32,20 +32,38 @@ site_ids <- fromJSON(rawToChar(site_ids$content))
 
 res <- GET(
 	url = "http://api.glasgow.gov.uk/traffic/v1/movement/query", 
-	query = list(size = "7", 
+	query = list(size = "168", 
 							 format = "json",
 							 start = "2025-01-01",
 							 end = "2025-01-07",
-							 period = "Day"))
+							 period = "Hour"))
 
 
 data = fromJSON(rawToChar(res$content))
 
 
-data$measurements$flow[[2]]
 
-data$measurements$concentration[[2]]
 
+data$measurements$flow
+
+data$measurements$concentration
+
+
+data$history$averages
+
+
+
+start_date <- as.Date("2023-12-31")
+
+
+for (x in 1:366){
+	
+	date <- start_date %m+% lubridate::days(x)
+	
+	print(date)
+	
+	
+}
 
 
 
